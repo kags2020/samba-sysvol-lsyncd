@@ -156,7 +156,7 @@ Run on each domain controller:
 
 
 
-sudo find /var/lib/samba/sysvol/your.example.local/ -type f | sort
+sudo find /var/lib/samba/sysvol/mybranch.mycompany.com/ -type f | sort
 
 
 

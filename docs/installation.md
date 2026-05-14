@@ -26,7 +26,7 @@ This solution uses:
 ```text
 ad1 (authoritative SYSVOL source)
   └─ lsyncd monitors:
-     /var/lib/samba/sysvol/your.example.local/
+     /var/lib/samba/sysvol/mybranch.mycompany.com/
         └─ rsync over SSH
            ├─ ad2
            └─ ad3
@@ -40,7 +40,7 @@ Nightly cron job:
 
 ## 2. Tested Environment
 
-- Domain: `your.example.local`
+- Domain: `mybranch.mycompany.com`
 - Authoritative SYSVOL source: `ad1`
 - Replica DCs: `ad2`, `ad3`
 - Operating system: Debian 12
@@ -267,25 +267,25 @@ sudo crontab -l
 Run on **ad1**.
 
 ```bash
-sudo touch /var/lib/samba/sysvol/your.example.local/test-file.txt
+sudo touch /var/lib/samba/sysvol/mybranch.mycompany.com/test-file.txt
 ```
 
 Verify on **ad2** and **ad3**.
 
 ```bash
-ls -l /var/lib/samba/sysvol/your.example.local/test-file.txt
+ls -l /var/lib/samba/sysvol/mybranch.mycompany.com/test-file.txt
 ```
 
 ### Modify Test File
 
 ```bash
-echo "test $(date)" | sudo tee -a /var/lib/samba/sysvol/your.example.local/test-file.txt
+echo "test $(date)" | sudo tee -a /var/lib/samba/sysvol/mybranch.mycompany.com/test-file.txt
 ```
 
 ### Delete Test File
 
 ```bash
-sudo rm /var/lib/samba/sysvol/your.example.local/test-file.txt
+sudo rm /var/lib/samba/sysvol/mybranch.mycompany.com/test-file.txt
 ```
 
 Verify deletion on `ad2` and `ad3`.

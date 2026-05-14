@@ -24,7 +24,7 @@ This document describes the tests used to validate SYSVOL replication.
 
 ```text
 
-/var/lib/samba/sysvol/your.example.local/
+/var/lib/samba/sysvol/mybranch.mycompany.com/
 
 1. Check lsyncd Is Running
 
@@ -43,15 +43,15 @@ sudo tail -50 /var/log/lsyncd.log
 Run on ad1:
 
 
-sudo touch /var/lib/samba/sysvol/your.example.local/lsyncd-create-test.txt
+sudo touch /var/lib/samba/sysvol/mybranch.mycompany.com/lsyncd-create-test.txt
 
 Verify on ad2:
 
-ls -l /var/lib/samba/sysvol/your.example.local/lsyncd-create-test.txt
+ls -l /var/lib/samba/sysvol/mybranch.mycompany.com/lsyncd-create-test.txt
 
 Verify on ad3:
 
-ls -l /var/lib/samba/sysvol/your.example.local/lsyncd-create-test.txt
+ls -l /var/lib/samba/sysvol/mybranch.mycompany.com/lsyncd-create-test.txt
 
 3. Test File Modification
 
@@ -59,33 +59,33 @@ ls -l /var/lib/samba/sysvol/your.example.local/lsyncd-create-test.txt
 
 Run on ad1:
 
-echo "modified $(date -Is)" | sudo tee -a /var/lib/samba/sysvol/your.example.local/lsyncd-create-test.txt
+echo "modified $(date -Is)" | sudo tee -a /var/lib/samba/sysvol/mybranch.mycompany.com/lsyncd-create-test.txt
 
 Verify on ad2:
 
-cat /var/lib/samba/sysvol/your.example.local/lsyncd-create-test.txt
+cat /var/lib/samba/sysvol/mybranch.mycompany.com/lsyncd-create-test.txt
 
 Verify on ad3:
 
-cat /var/lib/samba/sysvol/your.example.local/lsyncd-create-test.txt
+cat /var/lib/samba/sysvol/mybranch.mycompany.com/lsyncd-create-test.txt
 
 4. Test File Deletion
 
 Run on ad1:
 
-sudo rm /var/lib/samba/sysvol/your.example.local/lsyncd-create-test.txt
+sudo rm /var/lib/samba/sysvol/mybranch.mycompany.com/lsyncd-create-test.txt
 
 Verify on ad2:
 
 
 
-ls -l /var/lib/samba/sysvol/your.example.local/lsyncd-create-test.txt
+ls -l /var/lib/samba/sysvol/mybranch.mycompany.com/lsyncd-create-test.txt
 
 Verify on ad3:
 
 
 
-ls -l /var/lib/samba/sysvol/your.example.local/lsyncd-create-test.txt
+ls -l /var/lib/samba/sysvol/mybranch.mycompany.com/lsyncd-create-test.txt
 
 Expected result:
 
@@ -117,7 +117,7 @@ SYSVOL sync completed
 
 Run on each domain controller:
 
-sudo find /var/lib/samba/sysvol/your.example.local/ -type f | sort
+sudo find /var/lib/samba/sysvol/mybranch.mycompany.com/ -type f | sort
 
 The file lists should match across ad1, ad2, and ad3.
 
