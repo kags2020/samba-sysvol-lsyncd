@@ -62,7 +62,7 @@ Nightly cron job:
 The following operations were verified successfully:
 
 * File creation
-* File modification
+* File modification (expected behaviour; recommended to verify in your environment)
 * File deletion
 * Automatic replication to both secondary domain controllers
 
@@ -79,9 +79,4 @@ This solution was developed with substantial assistance from OpenAI's ChatGPT an
 
 ## License
 
-\## License
-
-
-
 This project is licensed under the MIT License. See the `LICENSE` file for details.
-
