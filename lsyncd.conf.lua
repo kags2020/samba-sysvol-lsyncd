@@ -5,14 +5,14 @@ settings {
     nodaemon       = false
 }
 
-local source = "/var/lib/samba/sysvol/ecs.kinghorndesign.com/"
-local target = "/var/lib/samba/sysvol/ecs.kinghorndesign.com/"
-local key    = "/home/kags/.ssh/id_ed25519_sysvol_sync"
+local source = "/var/lib/samba/sysvol/mybranch.mycompany.com/"
+local target = "/var/lib/samba/sysvol/mybranch.mycompany.com/"
+local key    = "/home/happychappie/.ssh/id_ed25519_sysvol_sync"
 
 sync {
     default.rsync,
     source = source,
-    target = "kags@ad2:" .. target,
+    target = "happychappie@ad2:" .. target,
     delay  = 5,
     rsync  = {
         archive  = true,
@@ -32,7 +32,7 @@ sync {
 sync {
     default.rsync,
     source = source,
-    target = "kags@ad3:" .. target,
+    target = "happychappie@ad3:" .. target,
     delay  = 5,
     rsync  = {
         archive  = true,

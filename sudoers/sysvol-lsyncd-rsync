@@ -1,1 +1,1 @@
-kags ALL=(root) NOPASSWD: /usr/bin/rsync
+happychappie ALL=(root) NOPASSWD: /usr/bin/rsync
